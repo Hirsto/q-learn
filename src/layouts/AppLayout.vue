@@ -1,14 +1,14 @@
 <template>
   <div>
-    <q-layout v-if="!loggedin">
+    <q-layout v-if="loggedin == 'n'">
       <q-page-container>
-        <Login/>
+        <Login @change-Login="changeLogin"/>
       </q-page-container>
     </q-layout>
     
-    <div v-if="loggedin">
-      <student-layout v-bind:topics="topics" v-bind:questions="questions" v-if="student"/>
-      <teacher-layout v-bind:topics="topics" v-bind:questions="questions" v-if="teacher"/>
+    <div v-if="loggedin != 'n'">
+      <student-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 's'"/>
+      <teacher-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 't'"/>
     </div>
   </div>
 </template>
@@ -21,11 +21,15 @@ import TeacherLayout from './TeacherLayout.vue'
 export default {
   name: 'AppLayout',
   components: {  StudentLayout, TeacherLayout, Login },
+  methods: {
+        changeLogin: function (status){
+          this.loggedin = status
+          console.log("status")
+        }
+      },
   data () {
     return {
-      loggedin: false,
-      teacher: false,
-      student: false,
+      loggedin: "n",
       topics: [{
         ID: 0,
         name: 'Math',
