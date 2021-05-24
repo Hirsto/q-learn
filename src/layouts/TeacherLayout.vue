@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Q-Learn: Student
+          Q-Learn: Teacher
         </q-toolbar-title>
 
       </q-toolbar>
@@ -45,16 +45,14 @@
     </q-drawer>
 
     <q-page-container>
-      <Questions v-bind:topics="topics" v-bind:questions="questions"/>
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import Questions from 'src/pages/student/Questions.vue'
 
 export default {
-  components: { Questions },
   name: 'MainLayout',
   //components: { EssentialLink },
   props: {
@@ -64,7 +62,6 @@ export default {
   data () {
     return {
       leftDrawerOpen: false
-      
     }
   }
 }

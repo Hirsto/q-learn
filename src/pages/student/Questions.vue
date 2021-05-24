@@ -9,23 +9,12 @@ import Question from '../../components/Question.vue'
 export default {
   components: { Question },
   name: 'Questions',
+  props: {
+    topics: Object,
+    questions: Object
+  },
   data () {
     return {
-      questions: [{
-        ID: 0,
-        qName: 'test',
-        qParagraphs: 'This is a test paragraph',
-        qOptions: [{
-          ID: 0,
-          label: 'This is the correct option',
-          value: 'corr'
-        },
-        {
-          ID: 1,
-          label: 'This is the incorrect option',
-          value: 'incorr'
-        }]
-      }]
     }
   }
 }
