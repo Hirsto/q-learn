@@ -14,7 +14,7 @@
         <q-toolbar-title>
           Q-Learn: Student
         </q-toolbar-title>
-
+        <q-btn :ripple="{ center: true }" flat dense label="Logout"  @click="changeLogin('n')"/>
       </q-toolbar>
     </q-header>
     
@@ -57,6 +57,11 @@ export default {
   components: { Questions },
   name: 'MainLayout',
   //components: { EssentialLink },
+  methods: {
+      changeLogin: function (status) {
+          this.$emit('change-Login', status)
+      }
+  },
   props: {
     topics: Object,
     questions: Object

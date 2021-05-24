@@ -7,8 +7,10 @@
     </q-layout>
     
     <div v-if="loggedin != 'n'">
-      <student-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 's'"/>
-      <teacher-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 't'"/>
+      <student-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 's'"
+      @change-Login="changeLogin"/>
+      <teacher-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 't'"
+      @change-Login="changeLogin"/>
     </div>
   </div>
 </template>
