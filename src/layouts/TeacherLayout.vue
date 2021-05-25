@@ -56,8 +56,7 @@ export default {
   name: 'MainLayout',
   //components: { EssentialLink },
   props: {
-    topics: Object,
-    questions: Object
+    topics: Object
   },
   methods: {
       changeLogin: function (status) {

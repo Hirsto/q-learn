@@ -7,9 +7,9 @@
     </q-layout>
     
     <div v-if="loggedin != 'n'">
-      <student-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 's'"
+      <student-layout v-bind:topics="topics" v-if="loggedin == 's'"
       @change-Login="changeLogin"/>
-      <teacher-layout v-bind:topics="topics" v-bind:questions="questions" v-if="loggedin == 't'"
+      <teacher-layout v-bind:topics="topics" v-if="loggedin == 't'"
       @change-Login="changeLogin"/>
     </div>
   </div>
@@ -35,21 +35,30 @@ export default {
       topics: [{
         ID: 0,
         name: 'Math',
-        progress: 0
-      }],
-      questions: [{
-        ID: 0,
-        qName: 'test',
-        qParagraphs: 'This is a test paragraph',
-        qOptions: [{
+        progress: 0,
+        questions: [{
           ID: 0,
-          label: 'This is the correct option',
-          value: 'corr'
-        },
-        {
-          ID: 1,
-          label: 'This is the incorrect option',
-          value: 'incorr'
+          qName: 'Addition',
+          qParagraphs: 'What is 374 + 474?',
+          qCorrect: 1,
+          qOptions: [{
+            ID: 0,
+            label: '825',
+            value: '0',
+            correct: false
+          },
+          {
+            ID: 1,
+            label: '848',
+            value: '1',
+            correct: true
+          },
+          {
+            ID: 2,
+            label: '846',
+            value: '2',
+            correct: false
+          }]
         }]
       }]
     }

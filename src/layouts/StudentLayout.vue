@@ -45,16 +45,16 @@
     </q-drawer>
 
     <q-page-container>
-      <Questions v-bind:topics="topics" v-bind:questions="questions"/>
+      <overview v-bind:topic="activeTopic"/>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import Questions from 'src/pages/student/Questions.vue'
+import Overview from 'src/pages/student/Overview.vue'
 
 export default {
-  components: { Questions },
+  components: {  Overview },
   name: 'MainLayout',
   //components: { EssentialLink },
   methods: {
@@ -63,12 +63,12 @@ export default {
       }
   },
   props: {
-    topics: Object,
-    questions: Object
+    topics: Object
   },
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      activeTopic: this.topics[0]
       
     }
   }
