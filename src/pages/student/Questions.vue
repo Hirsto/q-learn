@@ -19,6 +19,7 @@ export default {
       nextQuestion () {
           if (this.current_question + 1 == this.qNumber){
               console.log("out of questions");
+              this.$emit('out-of-questions')
           } else {
               this.current_question = this.current_question +1;
           }

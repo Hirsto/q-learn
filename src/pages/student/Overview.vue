@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center column">
-    <Questions v-if="qActive" v-bind:topic="this.topic"/>
+    <Questions @out-of-questions="activateQuestions" v-if="qActive" v-bind:topic="this.topic"/>
     <div v-else >
       <h1>{{this.topic.name}}</h1>
       <h4>Number of questions in this topic: {{qNumber}}</h4>
