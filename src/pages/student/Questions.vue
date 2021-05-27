@@ -14,7 +14,7 @@ export default {
   components: { Question },
   name: 'Questions',
   props: {
-    topic: Array
+    topic: Object
   },
   methods: {
       nextQuestion () {

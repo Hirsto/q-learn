@@ -72,7 +72,7 @@ export default {
     }
   },
   props: {
-    topics: Object
+    topics: Array
   },
   data () {
     return {

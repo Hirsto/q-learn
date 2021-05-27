@@ -79,7 +79,7 @@ export default {
   name: 'MainLayout',
   //components: { EssentialLink },
   props: {
-    topics: Object
+    topics: Array
   },
   methods: {
       changeLogin: function (status) {
