@@ -10,7 +10,7 @@
       <student-layout v-bind:topics="topics" v-if="loggedin == 's'"
       @change-Login="changeLogin" @improve-results="improveResults"/>
       <teacher-layout v-bind:topics="topics" v-if="loggedin == 't'"
-      @change-Login="changeLogin" />
+      @change-Login="changeLogin" @add-question="addQuestion"/>
     </div>
   </div>
 </template>
@@ -32,6 +32,39 @@ export default {
           this.topics[activeTopicNum].progress = this.topics[activeTopicNum].progress + 1
           console.log("improved results",  this.topics[activeTopicNum].questions.length, this.topics[activeTopicNum].progress)
         },
+        addQuestion: function (topicNum,
+          title,
+          paragraph,
+          option_1,
+          option_2,
+          option_3,
+          option_4) {
+            this.topics[topicNum].questions.push({
+              ID: this.topics[topicNum].questions.length,
+              qName: title,
+              qParagraphs: paragraph,
+              qCorrect: 1,
+              qOptions: [{
+                ID: 0,
+                label: option_1,
+                value: '0',
+              },{
+                ID: 1,
+                label: option_2,
+                value: '1',
+              },{
+                ID: 2,
+                label: option_3,
+                value: '2',
+              },{
+                ID: 3,
+                label: option_4,
+                value: '3',
+              }]
+              }
+
+          )
+        }
       },
   data () {
     return {

@@ -45,7 +45,7 @@
     </q-drawer>
       
     <q-page-container>
-      <overview v-bind:topic="activeTopic"/>
+      <overview v-bind:topic="activeTopic" @add-question="addQuestion"/>
     </q-page-container>
   </q-layout>
 </template>
@@ -63,7 +63,23 @@ export default {
   methods: {
       changeLogin: function (status) {
           this.$emit('change-Login', status)
-      }
+      },
+      addQuestion: function (
+            title,
+            paragraph,
+            option_1,
+            option_2,
+            option_3,
+            option_4){
+          this.$emit('add-question',
+          this.activeTopicNum,
+          title,
+          paragraph,
+          option_1,
+          option_2,
+          option_3,
+          option_4)
+        }
   },
   data () {
     return {

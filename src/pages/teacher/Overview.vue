@@ -103,6 +103,13 @@ export default {
           icon: 'cloud_done',
           message: 'Submitted',
         })
+        this.$emit('add-question',
+        this.title,
+        this.paragraph,
+        this.option_1,
+        this.option_2,
+        this.option_3,
+        this.option_4)
         
       }
     },
