@@ -38,12 +38,13 @@ export default {
           option_1,
           option_2,
           option_3,
-          option_4) {
+          option_4,
+          correct) {
             this.topics[topicNum].questions.push({
               ID: this.topics[topicNum].questions.length,
               qName: title,
               qParagraphs: paragraph,
-              qCorrect: 1,
+              qCorrect: parseInt(correct),
               qOptions: [{
                 ID: 0,
                 label: option_1,

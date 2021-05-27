@@ -1,10 +1,10 @@
 <template>
-  <q-page class="flex flex-center justify evenly">
-    <div>
-      <h1>{{topic.name}}</h1>
-    </div>
+  <q-page class="flex flex-center justify-evenly">
+    
     <div class="column">
-      <div v-for="question in topic.questions" :key="question.ID">{{question.qParagraphs}}</div>
+      <h1>{{topic.name}}</h1>
+      <h5>Questions</h5>
+      <div v-for="question in topic.questions" :key="question.ID">{{question.qName}}: {{question.qParagraphs}}</div>
     </div>
 
     <div>
@@ -61,6 +61,13 @@
         lazy-rules
         :rules="[ val => val && val.length > 0 || 'Please type something']"
       />
+      <q-input
+        filled
+        v-model="correct"
+        label="Which number option is correct?"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+      />
       
       <div>
         <q-btn label="Submit" type="submit" color="primary"/>
@@ -109,7 +116,8 @@ export default {
         this.option_1,
         this.option_2,
         this.option_3,
-        this.option_4)
+        this.option_4,
+        this.correct -1)
         
       }
     },
@@ -121,6 +129,7 @@ export default {
       this.option_2 = null
       this.option_3 = null
       this.option_4 = null
+      this.correct = null
       this.accept = false
     }
   },
@@ -135,6 +144,8 @@ export default {
       option_2: null,
       option_3: null,
       option_4: null,
+      correct: null,
+      
 
       accept: true
     }

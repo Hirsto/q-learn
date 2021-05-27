@@ -5,7 +5,7 @@
     <div v-else >
       <h1>{{this.topic.name}}</h1>
       <h4>Number of questions in this topic: {{qNumber}}</h4>
-      <h4>Number of questions you've gotten correct: {{this.topic.progress/qNumber}}</h4>
+      <h4>Number of questions you've gotten correct: {{this.topic.progress}}</h4>
       <q-btn :ripple="{ center: true }" color="secondary" label="Attempt Questions"
         @click="activateQuestions()"/>
     </div>

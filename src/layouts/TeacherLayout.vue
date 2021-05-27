@@ -70,7 +70,8 @@ export default {
             option_1,
             option_2,
             option_3,
-            option_4){
+            option_4,
+            correct){
           this.$emit('add-question',
           this.activeTopicNum,
           title,
@@ -78,7 +79,8 @@ export default {
           option_1,
           option_2,
           option_3,
-          option_4)
+          option_4,
+          correct)
         }
   },
   data () {
