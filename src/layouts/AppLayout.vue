@@ -10,7 +10,8 @@
       <student-layout v-bind:topics="topics" v-if="loggedin == 's'"
       @change-Login="changeLogin" @improve-results="improveResults"/>
       <teacher-layout v-bind:topics="topics" v-if="loggedin == 't'"
-      @change-Login="changeLogin" @add-question="addQuestion"/>
+      @change-Login="changeLogin" @add-question="addQuestion"
+      @add-topic="addTopic"/>
     </div>
   </div>
 </template>
@@ -65,6 +66,14 @@ export default {
               }
 
           )
+        },
+        addTopic: function (name){
+          this.topics.push({
+            ID: this.topics.length,
+            name: name,
+            progress: 0,
+            questions: []
+          })
         }
       },
   data () {

@@ -25,9 +25,10 @@
       content-class="bg-grey-1"
     >
       <div v-for="topic in topics" :key="topic.ID">
-      <q-item clickable v-ripple>
+      <q-item clickable v-ripple @click="setActive(topic.ID)">
         <q-item-section>{{topic.name}}</q-item-section>
           <q-knob
+          readonly
           show-value
           font-size="12px"
           v-model="topic.progress"
@@ -40,8 +41,28 @@
           {{ topic.progress }}%
           </q-knob>
       </q-item>
-      
       </div>
+      <h5>Add a new topic</h5>
+      <q-form
+      @submit="onSubmit"
+      @reset="onReset"
+      class="q-gutter-md"
+      >
+      <q-input
+        filled
+        v-model="name"
+        label="Topic Name"
+        :rules="[ val => val && val.length > 0 || 'Please type something']"
+      />
+
+
+
+      <div>
+        <q-btn label="Submit" type="submit" color="primary"/>
+        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+      </div>
+    </q-form>
+      
     </q-drawer>
       
     <q-page-container>
@@ -81,10 +102,34 @@ export default {
           option_3,
           option_4,
           correct)
-        }
+        },
+      addTopic: function (name){
+        this.$emit('add-topic', name)
+      },
+      onSubmit () {
+      
+        this.$q.notify({
+          color: 'green-4',
+          textColor: 'white',
+          icon: 'cloud_done',
+          message: 'Submitted'
+        })
+        this.$emit('add-topic', this.name)
+      
+    },
+
+    onReset () {
+      this.name = null
+    },
+    setActive(ID){
+      this.activeTopicNum = ID,
+      this.activeTopic = this.topics[ID]
+    }
+
   },
   data () {
     return {
+      name: null,
       leftDrawerOpen: false,
       activeTopicNum: 0,
       activeTopic: this.topics[0]

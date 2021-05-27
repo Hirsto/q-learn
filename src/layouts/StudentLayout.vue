@@ -25,9 +25,10 @@
       content-class="bg-grey-1"
     >
       <div v-for="topic in topics" :key="topic.ID">
-      <q-item clickable v-ripple>
+      <q-item clickable v-ripple @click="setActive(topic.ID)">
         <q-item-section>{{topic.name}}</q-item-section>
           <q-knob
+          readonly
           show-value
           font-size="12px"
           v-model="topic.progress"
@@ -64,7 +65,11 @@ export default {
       }, 
       improveResults () {
           this.$emit('improve-results', this.activeTopicNum)
-      }
+      },
+    setActive(ID){
+      this.activeTopicNum = ID,
+      this.activeTopic = this.topics[ID]
+    }
   },
   props: {
     topics: Object
