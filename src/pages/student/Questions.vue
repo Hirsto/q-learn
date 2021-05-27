@@ -1,6 +1,7 @@
 <template>
   <q-page class="flex flex-center column">
-    <Question v-bind:question="topic.questions[current_question]"/>
+    <Question @improve-results="improveResults" 
+    v-bind:question="topic.questions[current_question]"/>
     <div style="height: 50px"/>
     <q-btn label="Continue" @click="nextQuestion"/>
     <p> You have {{this.qNumber - this.current_question -1}} questions left</p>
@@ -18,11 +19,13 @@ export default {
   methods: {
       nextQuestion () {
           if (this.current_question + 1 == this.qNumber){
-              console.log("out of questions");
               this.$emit('out-of-questions')
           } else {
               this.current_question = this.current_question +1;
           }
+      }, 
+      improveResults () {
+          this.$emit('improve-results')
       }
   },
   data () {

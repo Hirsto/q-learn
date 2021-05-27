@@ -32,7 +32,8 @@ export default {
           console.log(selection)
           this.answered = true;
           if (selection == question.qCorrect){
-              this.correct = true;              
+              this.correct = true;
+              this.$emit('improve-results')              
           }
       }
   },

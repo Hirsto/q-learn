@@ -45,7 +45,8 @@
     </q-drawer>
 
     <q-page-container>
-      <overview v-bind:topic="activeTopic"/>
+      <overview v-bind:topic="activeTopic"
+      @improve-results="improveResults"/>
     </q-page-container>
   </q-layout>
 </template>
@@ -60,6 +61,9 @@ export default {
   methods: {
       changeLogin: function (status) {
           this.$emit('change-Login', status)
+      }, 
+      improveResults () {
+          this.$emit('improve-results', this.activeTopicNum)
       }
   },
   props: {
@@ -68,6 +72,7 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
+      activeTopicNum: 0,
       activeTopic: this.topics[0]
       
     }

@@ -43,16 +43,18 @@
       
       </div>
     </q-drawer>
-
+      
     <q-page-container>
-      <router-view />
+      <overview v-bind:topic="activeTopic"/>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
+import Overview from 'src/pages/teacher/Overview.vue'
 
 export default {
+  components: { Overview },
   name: 'MainLayout',
   //components: { EssentialLink },
   props: {
@@ -65,7 +67,9 @@ export default {
   },
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      activeTopicNum: 0,
+      activeTopic: this.topics[0]
     }
   }
 }

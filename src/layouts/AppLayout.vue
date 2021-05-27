@@ -8,9 +8,9 @@
     
     <div v-if="loggedin != 'n'">
       <student-layout v-bind:topics="topics" v-if="loggedin == 's'"
-      @change-Login="changeLogin"/>
+      @change-Login="changeLogin" @improve-results="improveResults"/>
       <teacher-layout v-bind:topics="topics" v-if="loggedin == 't'"
-      @change-Login="changeLogin"/>
+      @change-Login="changeLogin" />
     </div>
   </div>
 </template>
@@ -25,9 +25,13 @@ export default {
   components: {  StudentLayout, TeacherLayout, Login },
   methods: {
         changeLogin: function (status){
-          this.loggedin = status
-          console.log("status")
-        }
+          this.loggedin = status;
+          console.log("status");
+        },
+        improveResults: function (activeTopicNum) {
+          this.topics[activeTopicNum].progress = this.topics[activeTopicNum].progress + 1
+          console.log("improved results",  this.topics[activeTopicNum].questions.length, this.topics[activeTopicNum].progress)
+        },
       },
   data () {
     return {
