@@ -4,7 +4,7 @@
     v-bind:question="topic.questions[current_question]"/>
     <div style="height: 50px"/>
     <q-btn label="Continue" @click="nextQuestion"/>
-    <p> You have {{this.qNumber - this.current_question -1}} questions left</p>
+    <p> You have {{this.topic.questions.length - this.current_question -1}} questions left</p>
   </q-page>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
       nextQuestion () {
-          if (this.current_question + 1 == this.qNumber){
+          if (this.current_question + 1 == this.topic.questions.length){
               this.$emit('out-of-questions')
           } else {
               this.current_question = this.current_question +1;
@@ -30,8 +30,7 @@ export default {
   },
   data () {
     return {
-        current_question: 0,
-        qNumber: this.topic.questions.length
+        current_question: 0
     }
   }
 }
